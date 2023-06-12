@@ -5,9 +5,18 @@ import Message, { type MessageT } from "@/components/Message";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
 
+const SHOW_MORE_DELAY_SECS = 0.6;
+
 export default function Scenario1() {
-  const [messages, setMessages] = useState<MessageT[]>([]);
   const [showUntil, setShowUntil] = useState(1);
+  const showMore = (howMany: number) => {
+    const curr = showUntil;
+    for (let i = 0; i < howMany; i++) {
+      setTimeout(() => {
+        setShowUntil(curr + i + 1);
+      }, SHOW_MORE_DELAY_SECS * i * 1000);
+    }
+  };
 
   const MESSAGES: MessageT[] = [
     {
@@ -17,7 +26,7 @@ export default function Scenario1() {
       embeddings: [
         {
           type: "button",
-          onClick: () => setShowUntil((s) => s + 2),
+          onClick: () => showMore(2),
           text: "제품 정보 보기",
         },
         { type: "button", onClick: () => { }, text: "다음에 보기" },
@@ -58,7 +67,7 @@ export default function Scenario1() {
       embeddings: [
         {
           type: "button",
-          onClick: () => setShowUntil((s) => s + 2),
+          onClick: () => showMore(2),
           text: "영상 보기",
         },
         { type: "button", onClick: () => { }, text: "Yes" },
@@ -78,7 +87,7 @@ export default function Scenario1() {
       embeddings: [
         {
           type: "button",
-          onClick: () => setShowUntil((s) => s + 1),
+          onClick: () => showMore(1),
           text: "Yes",
         },
         { type: "button", onClick: () => { }, text: "No" },
@@ -91,7 +100,7 @@ export default function Scenario1() {
       embeddings: [
         {
           type: "button",
-          onClick: () => setShowUntil((s) => s + 1),
+          onClick: () => showMore(1),
           text: "물놀이 아이템 추천 보기",
         },
       ],
@@ -191,7 +200,7 @@ export default function Scenario1() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{
-                  duration: m.sender === "bot" ? 2 : 1,
+                  duration: m.sender === "bot" ? 0.7 : 0.2,
                   ease: "easeIn",
                 }}
               >

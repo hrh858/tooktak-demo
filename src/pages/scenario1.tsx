@@ -3,11 +3,22 @@ import Header from "@/components/Header";
 import InputBar from "@/components/InputBar";
 import Message, { type MessageT } from "@/components/Message";
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useMemo, useState } from "react";
+import { useState } from "react";
+
+const SHOW_MORE_DELAY_SECS = 0.6;
 
 export default function Scenario1() {
   const [messages, setMessages] = useState<MessageT[]>([]);
   const [showUntil, setShowUntil] = useState(-1);
+
+  const showMore = (howMany: number) => {
+    const curr = showUntil;
+    for (let i = 0; i < howMany; i++) {
+      setTimeout(() => {
+        setShowUntil(curr + i + 1);
+      }, SHOW_MORE_DELAY_SECS * i * 1000);
+    }
+  };
 
   const MESSAGES: MessageT[] = [
     {
@@ -23,7 +34,8 @@ export default function Scenario1() {
         {
           type: "button",
           onClick: () => {
-            setShowUntil((s) => s + 2);
+            // setShowUntil((s) => s + 2);
+            showMore(2);
           },
           text: "Yes",
         },
@@ -48,7 +60,8 @@ export default function Scenario1() {
         {
           type: "button",
           onClick: () => {
-            setShowUntil((s) => s + 3);
+            showMore(3);
+            // setShowUntil((s) => s + 3);
           },
           text: "Yes",
         },
@@ -101,21 +114,24 @@ export default function Scenario1() {
         {
           type: "button",
           onClick: () => {
-            setShowUntil((s) => s + 1);
+            showMore(1);
+            // setShowUntil((s) => s + 1);
           },
           text: "파우더 주문",
         },
         {
           type: "button",
           onClick: () => {
-            setShowUntil((s) => s + 1);
+            showMore(1);
+            // setShowUntil((s) => s + 1);
           },
           text: "기저귀 주문",
         },
         {
           type: "button",
           onClick: () => {
-            setShowUntil((s) => s + 1);
+            showMore(1);
+            // setShowUntil((s) => s + 1);
           },
           text: "로션 주문",
         },
@@ -127,56 +143,6 @@ export default function Scenario1() {
       text: "선택하신 제품들의 주문을 완료했습니다. 배송은 내일 도착 예정입니다. 아기의 상태가 빨리 나아지길 바라겠습니다.",
     },
   ] as any;
-
-  // {
-  //   sender: "bot",
-  //   text: BOT_MESSAGES[1].text,
-  //   timestamp: new Date(),
-  //   embeddings: BOT_MESSAGES[1].embeddings,
-  // },
-  // {
-  //   sender: "bot",
-  //   text: BOT_MESSAGES[2].text,
-  //   timestamp: new Date(),
-  //   embeddings: BOT_MESSAGES[2].embeddings,
-  // },
-  // {
-  //   sender: "bot",
-  //   text: BOT_MESSAGES[3].text,
-  //   timestamp: new Date(),
-  //   embeddings: BOT_MESSAGES[3].embeddings,
-  // },
-  // {
-  //   sender: "bot",
-  //   text: BOT_MESSAGES[4].text,
-  //   timestamp: new Date(),
-  //   embeddings: BOT_MESSAGES[4].embeddings,
-  // },
-  // {
-  //   sender: "bot",
-  //   text: BOT_MESSAGES[5].text,
-  //   timestamp: new Date(),
-  //   embeddings: BOT_MESSAGES[5].embeddings,
-  // },
-  // {
-  //   sender: "bot",
-  //   text: BOT_MESSAGES[6].text,
-  //   timestamp: new Date(),
-  //   embeddings: BOT_MESSAGES[6].embeddings,
-  // },
-
-  // if (messages.length === 5) {
-  //   setMessages((m) => [
-  //     ...m,
-  //     {
-  //       sender: "bot",
-  //       text: BOT_MESSAGES[6].text,
-  //       timestamp: new Date(),
-  //       embeddings: BOT_MESSAGES[6].embeddings,
-  //     },
-  //   ]);
-  // }
-  //
 
   return (
     <Chat>
@@ -193,8 +159,8 @@ export default function Scenario1() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{
-                  duration: m.sender === "bot" ? 2 : 1,
-                  ease: "easeIn",
+                  duration: m.sender === "bot" ? 0.7 : 0.3,
+                  ease: "easeOut",
                 }}
               >
                 <Message {...m} />
