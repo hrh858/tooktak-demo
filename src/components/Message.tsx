@@ -175,8 +175,6 @@ function ImageEmbedding({ imageUrl }: ImageEmbeddingT) {
         height="318"
         src={imageUrl}
         title="2023 하기스 썸머! 흡수는 더 강력하게 기저귀 속 온도는 더 시원하게"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowFullScreen
       />
     </div>
   );
