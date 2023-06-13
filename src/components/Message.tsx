@@ -10,7 +10,13 @@ export type MessageT = {
     | { type: "hospital" | "taxi" | "short" }
     | ProductEmbeddingT
     | ButtonEmbeddingT
+    | ImageEmbeddingT
   )[];
+};
+
+type ImageEmbeddingT = {
+  type: "image";
+  imageUrl: string;
 };
 
 type ProductEmbeddingT = {
@@ -60,6 +66,8 @@ export default function Message({
                 <ShortVideoEmbedding key={idx} />
               ) : e.type === "button" ? (
                 <ButtonEmbedding {...e} key={idx} />
+              ) : e.type === "image" ? (
+                <ImageEmbedding {...e} key={idx} />
               ) : null
             )}
           </div>
@@ -154,5 +162,22 @@ function ButtonEmbedding({ onClick, text }: ButtonEmbeddingT) {
     >
       {text}
     </button>
+  );
+}
+
+function ImageEmbedding({ imageUrl }: ImageEmbeddingT) {
+  console.log(imageUrl);
+  return (
+    <div className="aspect-square w-fit overflow-hidden h-fit shrink-0 border-highlight border-2 relative rounded-md">
+      <img
+        alt={imageUrl}
+        width="318"
+        height="318"
+        src={imageUrl}
+        title="2023 하기스 썸머! 흡수는 더 강력하게 기저귀 속 온도는 더 시원하게"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowFullScreen
+      />
+    </div>
   );
 }

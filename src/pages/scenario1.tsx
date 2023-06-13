@@ -22,28 +22,95 @@ export default function Scenario1() {
 
   const MESSAGES: MessageT[] = [
     {
-      id: 1,
+      id: -1,
       sender: "user",
       text: "아기 발진",
     },
     {
-      id: 2,
+      id: 1,
       sender: "bot",
-      text: "그럼 아이가 불편하겠어요. 가까운 'ABC 병원'의 예약 가능한 가장 빠른 시간은 오늘 2시입니다. 이 시간으로 예약을 진행할까요?",
+      text: "아기 발진을 검색하셨군요. 기저귀 발진이 생겼을 때 대응 방법을 안내해드릴까요?",
       embeddings: [
         {
           type: "button",
-          onClick: () => {
-            // setShowUntil((s) => s + 2);
-            showMore(2);
-          },
           text: "Yes",
+          onClick: () => showMore(3),
         },
-        { type: "button", onClick: () => { }, text: "No" },
+        {
+          type: "button",
+          text: "No",
+          onClick: () => null,
+        },
+      ],
+    },
+    {
+      id: 2,
+      sender: "bot",
+      text: "아기 엉덩이 피부발진 원인과 예방 - 기저귀 발진",
+      embeddings: [
+        {
+          type: "image",
+          imageUrl:
+            "https://qdmxatvgkkiz17108123.cdn.ntruss.com/demo/demo1.png",
+        },
+        {
+          type: "image",
+          imageUrl:
+            "https://qdmxatvgkkiz17108123.cdn.ntruss.com/demo/demo2.png",
+        },
+        {
+          type: "image",
+          imageUrl:
+            "https://qdmxatvgkkiz17108123.cdn.ntruss.com/demo/demo3.png",
+        },
       ],
     },
     {
       id: 3,
+      sender: "bot",
+      text: "",
+      embeddings: [
+        {
+          type: "button",
+          text: "자세히 보기",
+        },
+      ],
+    },
+    {
+      id: 4,
+      sender: "bot",
+      text: "도움이 되셨나요? 혹시 필요하시다면 근처의 가까운 피부과나 소아과를 예약해드릴까요?",
+      embeddings: [
+        {
+          type: "button",
+          text: "Yes",
+          onClick: () => showMore(1),
+        },
+        {
+          type: "button",
+          text: "No",
+          onClick: () => null,
+        },
+      ],
+    },
+    {
+      id: 6,
+      sender: "bot",
+      text: "뚝딱이: 가까운 'ABC 병원'의 예약 가능한 가장 빠른 시간은 오늘 2시입니다. 이 시간으로 예약을 진행할까요?",
+      // text: "그럼 아이가 불편하겠어요. 가까운 'ABC 병원'의 예약 가능한 가장 빠른 시간은 오늘 2시입니다. 이 시간으로 예약을 진행할까요?",
+      embeddings: [
+        {
+          type: "button",
+          onClick: () => {
+            showMore(2);
+          },
+          text: "Yes",
+        },
+        { type: "button", onClick: () => {}, text: "No" },
+      ],
+    },
+    {
+      id: 7,
       sender: "bot",
       text: "'ABC 병원'에 2시 예약 완료했습니다.",
       embeddings: [
@@ -53,7 +120,7 @@ export default function Scenario1() {
       ],
     },
     {
-      id: 4,
+      id: 8,
       sender: "bot",
       text: "병원까지 카카오 택시를 호출해드릴까요?",
       embeddings: [
@@ -67,19 +134,19 @@ export default function Scenario1() {
         },
         {
           type: "button",
-          onClick: () => { },
+          onClick: () => {},
           text: "No",
         },
       ],
     },
     {
-      id: 5,
+      id: 9,
       sender: "bot",
       text: "택시 호출 완료했습니다. 5분 내 도착 예정입니다.",
       embeddings: [{ type: "taxi" }],
     },
     {
-      id: 6,
+      id: 10,
       sender: "bot",
       text: "그리고 아기 발진 케어를 위한 아이템들에 대해 알아보시겠어요? 추천 제품들이 여기 있습니다.",
       embeddings: [
@@ -107,7 +174,7 @@ export default function Scenario1() {
       ],
     },
     {
-      id: 7,
+      id: 11,
       sender: "bot",
       text: "원하시는 제품을 선택해주세요.",
       embeddings: [
@@ -138,7 +205,7 @@ export default function Scenario1() {
       ],
     },
     {
-      id: 8,
+      id: 12,
       sender: "bot",
       text: "선택하신 제품들의 주문을 완료했습니다. 배송은 내일 도착 예정입니다. 아기의 상태가 빨리 나아지길 바라겠습니다.",
     },

@@ -113,9 +113,9 @@ export default function Scenario1() {
         {
           type: "product",
           imageUrl:
-            "https://search.pstatic.net/common/?src=http%3A%2F%2Fcafefiles.naver.net%2FMjAxOTEwMTFfMTQ3%2FMDAxNTcwNzYzMDc3MTUz.d9r3JMCRRbl4umJ6AZ7PNFKBVMkAG-XjrHdF-UGlKIIg.J1KHGTxMLrEpo_c6Pfn5xFNahgWmcol_Jby8q73z97gg.PNG%2Fsold_out.PNG&type=sc960_832",
-          url: "https://www.momq.co.kr/shop/shopdetail.html?branduid=18550&search=%25B9%25B0%25B3%25EE%25C0%25CC&sort=sellcnt&xcode=001&mcode=004&scode=005&GfDT=bWh3UQ%3D%3D",
-          name: "(LIVE) NEW 하기스 물놀이팬티 5단계 공용 12매 (EA)",
+            "https://cdn6-kinx.makeshop.co.kr/shopimages/2020nemomq/0010040035862.jpg?1679034698",
+          url: "https://www.momq.co.kr/shop/shopdetail.html?branduid=17982&source=igodigital",
+          name: "NEW 하기스 물놀이팬티 5단계 공용 12매 (EA)",
         },
         {
           type: "product",
@@ -134,56 +134,6 @@ export default function Scenario1() {
       ],
     },
   ] as any;
-
-  // {
-  //   sender: "bot",
-  //   text: BOT_MESSAGES[1].text,
-  //   timestamp: new Date(),
-  //   embeddings: BOT_MESSAGES[1].embeddings,
-  // },
-  // {
-  //   sender: "bot",
-  //   text: BOT_MESSAGES[2].text,
-  //   timestamp: new Date(),
-  //   embeddings: BOT_MESSAGES[2].embeddings,
-  // },
-  // {
-  //   sender: "bot",
-  //   text: BOT_MESSAGES[3].text,
-  //   timestamp: new Date(),
-  //   embeddings: BOT_MESSAGES[3].embeddings,
-  // },
-  // {
-  //   sender: "bot",
-  //   text: BOT_MESSAGES[4].text,
-  //   timestamp: new Date(),
-  //   embeddings: BOT_MESSAGES[4].embeddings,
-  // },
-  // {
-  //   sender: "bot",
-  //   text: BOT_MESSAGES[5].text,
-  //   timestamp: new Date(),
-  //   embeddings: BOT_MESSAGES[5].embeddings,
-  // },
-  // {
-  //   sender: "bot",
-  //   text: BOT_MESSAGES[6].text,
-  //   timestamp: new Date(),
-  //   embeddings: BOT_MESSAGES[6].embeddings,
-  // },
-
-  // if (messages.length === 5) {
-  //   setMessages((m) => [
-  //     ...m,
-  //     {
-  //       sender: "bot",
-  //       text: BOT_MESSAGES[6].text,
-  //       timestamp: new Date(),
-  //       embeddings: BOT_MESSAGES[6].embeddings,
-  //     },
-  //   ]);
-  // }
-  //
 
   return (
     <Chat>
@@ -210,11 +160,7 @@ export default function Scenario1() {
         </div>
       </AnimatePresence>
       <div className="mt-auto w-full py-2 md:py-4 px-2 md:px-8">
-        <InputBar
-          onSend={(text) => {
-            setShowUntil(2);
-          }}
-        />
+        <InputBar onSend={() => { }} />
       </div>
     </Chat>
   );
