@@ -99,15 +99,31 @@ export default function Scenario1() {
         {
           type: "button",
           onClick: () => showMore(1),
-          text: "물놀이 아이템 추천 보기",
+          text: "Yes",
+        },
+        {
+          type: "button",
+          onClick: () => showMore(1),
+          text: "No",
         },
       ],
     },
     {
       id: 7,
-      text: "아기의 성장과 건강을 위해 항상 최선을 다하겠습니다. 추가로 필요한 것이 있으시면 언제든지 알려주세요.",
+      text: "주문 완료했습니다! 배송은 내일 도착 예정입니다. 또한 여름이 다가오고 있으니, 아기와 함께 즐길 수 있는 물놀이 아이템들도 추천드립니다.",
       sender: "bot",
-      invertEmbeddings: true,
+      embeddings: [
+        {
+          type: "button",
+          text: "물놀이 아이템 추천 보기",
+          onClick: () => showMore(2),
+        },
+      ],
+    },
+    {
+      id: 8,
+      text: "",
+      sender: "bot",
       embeddings: [
         {
           type: "product",
@@ -131,6 +147,12 @@ export default function Scenario1() {
           name: "[먼치킨] 물놀이 오리장난감-온도감지",
         },
       ],
+    },
+    {
+      id: 9,
+      sender: "bot",
+      text: "아기의 성장과 건강을 위해 항상 최선을 다하겠습니다. 추가로 필요한 것이 있으시면 언제든지 알려주세요.",
+      embeddings: [],
     },
   ] as any;
 
