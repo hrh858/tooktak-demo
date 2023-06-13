@@ -73,6 +73,12 @@ export default function Scenario1() {
         {
           type: "button",
           text: "자세히 보기",
+          onClick: () => {
+            window.open(
+              "https://www.momq.co.kr/board/board.html?code=2020nemomq_board1&page=1&type=v&board_cate=&num1=999675&num2=00000&s_id=&stext=%C7%C7%BA%CE&ssubject=&shname=&scontent=&search_type=subject&number=8&lock=N",
+              "_blank"
+            );
+          },
         },
       ],
     },
