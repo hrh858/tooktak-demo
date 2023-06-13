@@ -9,7 +9,7 @@ const SHOW_MORE_DELAY_SECS = 0.6;
 
 export default function Scenario1() {
   const [messages, setMessages] = useState<MessageT[]>([]);
-  const [showUntil, setShowUntil] = useState(-1);
+  const [showUntil, setShowUntil] = useState(1);
 
   const showMore = (howMany: number) => {
     const curr = showUntil;
@@ -22,14 +22,9 @@ export default function Scenario1() {
 
   const MESSAGES: MessageT[] = [
     {
-      id: -1,
-      sender: "user",
-      text: "아기 발진",
-    },
-    {
       id: 1,
       sender: "bot",
-      text: "아기 발진을 검색하셨군요. 기저귀 발진이 생겼을 때 대응 방법을 안내해드릴까요?",
+      text: "요즘 세준이 발진 때문에 걱정이 많으신 것 같네요. 도와드릴까요?",
       embeddings: [
         {
           type: "button",
@@ -43,6 +38,23 @@ export default function Scenario1() {
         },
       ],
     },
+    // {
+    //   id: 1,
+    //   sender: "bot",
+    //   text: "아기 발진을 검색하셨군요. 기저귀 발진이 생겼을 때 대응 방법을 안내해드릴까요?",
+    //   embeddings: [
+    //     {
+    //       type: "button",
+    //       text: "Yes",
+    //       onClick: () => showMore(3),
+    //     },
+    //     {
+    //       type: "button",
+    //       text: "No",
+    //       onClick: () => null,
+    //     },
+    //   ],
+    // },
     {
       id: 2,
       sender: "bot",

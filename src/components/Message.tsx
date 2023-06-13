@@ -6,6 +6,7 @@ export type MessageT = {
   sender: "user" | "bot";
   timestamp: Date;
   text: string;
+  invertEmbeddings?: boolean;
   embeddings?: (
     | { type: "hospital" | "taxi" | "short" }
     | ProductEmbeddingT
@@ -37,6 +38,7 @@ export default function Message({
   text,
   timestamp,
   embeddings,
+  invertEmbeddings,
 }: MessageT) {
   return (
     <div
@@ -47,7 +49,9 @@ export default function Message({
     >
       <div
         className={clsx([
-          "p-2 rounded-md w-fit flex flex-col gap-1 max-w-xs md:max-w-lg lg:max-w-3xl",
+          "p-2 rounded-md w-fit flex gap-1 max-w-xs md:max-w-lg lg:max-w-3xl",
+          !invertEmbeddings && "flex-col",
+          invertEmbeddings && "flex-col-reverse",
           sender === "user" && "bg-highlight text-primary",
           sender === "bot" && "bg-secondary text-contrast",
         ])}

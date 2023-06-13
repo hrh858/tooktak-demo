@@ -29,7 +29,7 @@ export default function Scenario1() {
           onClick: () => showMore(2),
           text: "제품 정보 보기",
         },
-        { type: "button", onClick: () => { }, text: "다음에 보기" },
+        { type: "button", onClick: () => {}, text: "다음에 보기" },
       ],
     },
     {
@@ -70,8 +70,8 @@ export default function Scenario1() {
           onClick: () => showMore(2),
           text: "영상 보기",
         },
-        { type: "button", onClick: () => { }, text: "Yes" },
-        { type: "button", onClick: () => { }, text: "No" },
+        { type: "button", onClick: () => {}, text: "Yes" },
+        { type: "button", onClick: () => {}, text: "No" },
       ],
     },
     {
@@ -80,22 +80,22 @@ export default function Scenario1() {
       sender: "bot",
       embeddings: [{ type: "short" }],
     },
-    {
-      id: 5,
-      text: "여기 '하기스 썸머 기저귀'에 대해 더 자세히 알아보실 수 있는 동영상 링크입니다【77†(동영상 보기)】. 지금 바로 주문을 도와드릴까요?",
-      sender: "bot",
-      embeddings: [
-        {
-          type: "button",
-          onClick: () => showMore(1),
-          text: "Yes",
-        },
-        { type: "button", onClick: () => { }, text: "No" },
-      ],
-    },
+    // {
+    //   id: 5,
+    //   text: "여기 '하기스 썸머 기저귀'에 대해 더 자세히 알아보실 수 있는 동영상 링크입니다【77†(동영상 보기)】. 지금 바로 주문을 도와드릴까요?",
+    //   sender: "bot",
+    //   embeddings: [
+    //     {
+    //       type: "button",
+    //       onClick: () => showMore(1),
+    //       text: "Yes",
+    //     },
+    //     { type: "button", onClick: () => {}, text: "No" },
+    //   ],
+    // },
     {
       id: 6,
-      text: "주문 완료했습니다. 배송은 내일 도착 예정입니다. 또한 여름이 다가오고 있으니, 아기와 함께 즐길 수 있는 물놀이 아이템들도 추천드립니다.",
+      text: "지금 바로 주문을 도와드릴까요?",
       sender: "bot",
       embeddings: [
         {
@@ -109,6 +109,7 @@ export default function Scenario1() {
       id: 7,
       text: "아기의 성장과 건강을 위해 항상 최선을 다하겠습니다. 추가로 필요한 것이 있으시면 언제든지 알려주세요.",
       sender: "bot",
+      invertEmbeddings: true,
       embeddings: [
         {
           type: "product",
@@ -160,7 +161,7 @@ export default function Scenario1() {
         </div>
       </AnimatePresence>
       <div className="mt-auto w-full py-2 md:py-4 px-2 md:px-8">
-        <InputBar onSend={() => { }} />
+        <InputBar onSend={() => {}} />
       </div>
     </Chat>
   );
