@@ -62,7 +62,7 @@ export default function Scenario1() {
     },
     {
       id: 2,
-      text: "'하기스 썸머 기저귀' - 사진과 함께 제품 설명과 후기를 보여줍니다. 또한 이 제품에 대한 소개 동영상도 함께 첨부해드릴게요. 지금 바로 주문을 도와드릴까요?",
+      text: "'하기스 썸머 기저귀' - 사진과 함께 제품 설명과 후기를 보여줍니다.\n또한 이 제품에 대한 소개 동영상도 함께 첨부해드릴게요. 지금 바로 주문을 도와드릴까요?",
       sender: "bot",
       embeddings: [
         {
@@ -70,8 +70,6 @@ export default function Scenario1() {
           onClick: () => showMore(2),
           text: "영상 보기",
         },
-        { type: "button", onClick: () => {}, text: "Yes" },
-        { type: "button", onClick: () => {}, text: "No" },
       ],
     },
     {
