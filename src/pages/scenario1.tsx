@@ -3,13 +3,19 @@ import Header from "@/components/Header";
 import InputBar from "@/components/InputBar";
 import Message, { type MessageT } from "@/components/Message";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const SHOW_MORE_DELAY_SECS = 0.6;
 
 export default function Scenario1() {
-  const [messages, setMessages] = useState<MessageT[]>([]);
   const [showUntil, setShowUntil] = useState(1);
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const msgContEl = messagesContainerRef.current;
+    if (!msgContEl) return;
+    msgContEl.scrollTo(0, msgContEl.scrollHeight);
+  }, [showUntil, messagesContainerRef]);
 
   const showMore = (howMany: number) => {
     const curr = showUntil;
@@ -124,7 +130,7 @@ export default function Scenario1() {
           },
           text: "Yes",
         },
-        { type: "button", onClick: () => {}, text: "No" },
+        { type: "button", onClick: () => { }, text: "No" },
       ],
     },
     {
@@ -152,7 +158,7 @@ export default function Scenario1() {
         },
         {
           type: "button",
-          onClick: () => {},
+          onClick: () => { },
           text: "No",
         },
       ],
@@ -235,22 +241,23 @@ export default function Scenario1() {
         <Header />
       </div>
       <AnimatePresence>
-        <div className="w-full h-full overflow-y-auto py-2 md:py-4 gap-5 flex flex-col-reverse px-2 md:px-8">
-          {MESSAGES.splice(0, showUntil)
-            .reverse()
-            .map((m) => (
-              <motion.div
-                key={m.id}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{
-                  duration: m.sender === "bot" ? 0.7 : 0.3,
-                  ease: "easeOut",
-                }}
-              >
-                <Message {...m} />
-              </motion.div>
-            ))}
+        <div
+          ref={messagesContainerRef}
+          className="w-full h-full overflow-y-auto py-2 md:py-4 gap-5 flex flex-col px-2 md:px-8"
+        >
+          {MESSAGES.splice(0, showUntil).map((m) => (
+            <motion.div
+              key={m.id}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{
+                duration: m.sender === "bot" ? 0.7 : 0.3,
+                ease: "easeOut",
+              }}
+            >
+              <Message {...m} />
+            </motion.div>
+          ))}
         </div>
       </AnimatePresence>
       <div className="mt-auto w-full py-2 md:py-4 px-2 md:px-8">
